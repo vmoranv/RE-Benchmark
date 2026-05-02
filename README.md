@@ -131,15 +131,6 @@ Key design decisions documented in `docs/adr/`:
 | Anthropic | `anthropic/*` | `anthropic/claude-sonnet-4-6` |
 | OpenAI | `openai/*` | `openai/gpt-4o` |
 
-## Status
-
-| Milestone | Status |
-|-----------|:------:|
-| M1: Vertical-slice skeleton | Done |
-| M2: 18 dimensions + multi-model + sandbox | Done |
-| M3: PostgreSQL persistence + real LLM runs | Done |
-| M4: Performance, accessibility, report export | Done |
-
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines. Pre-commit hooks enforce code quality automatically.

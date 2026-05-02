@@ -23,6 +23,9 @@
   "homepage": "https://github.com/vmoranv/RE-Benchmark#readme",
   "devDependencies": {
     "javascript-obfuscator": "^5.4.2",
-    "js-confuser": "^2.0.1"
+    "js-beautify": "^1.15.4",
+    "js-confuser": "^2.0.1",
+    "uglify-js": "^3.19.3",
+    "wabt": "^1.0.39"
   }
 }

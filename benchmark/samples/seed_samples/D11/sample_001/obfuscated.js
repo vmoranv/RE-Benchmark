@@ -1,2 +1,8 @@
-var _0x="[pid 1234] openat(AT_FDCWD, \"/api/config.json\", O_RDONLY) = 3\n[pid 1234] read(3, \"{\\\"theme\\\":\\\"dark\\\",\\\"lang\\\":\\\"en\\\"}\", 128) = 28\n[pid 1234] close(3) = 0\n[pid 1234] openat(AT_FDCWD, \"/api/user/profile\", O_RDONLY) = 3\n[pid 1234] read(3, \"{\\\"name\\\":\\\"Alice\\\",\\\"role\\\":\\\"admin\\\"}\", 128) = 32\n[pid 1234] write(1, \"Profile loaded\", 14) = 14\n[pid 1234] openat(AT_FDCWD, \"/dev/urandom\", O_RDONLY) = 4\n[pid 1234] read(4, \"\xa3\xf1\x2b\xc8\", 4) = 4\n[pid 1234] close(4) = 0";
-module.exports = { trace: _0x };
+function parseSyscalls(trace) {
+  return trace.split("\n").filter(function(l) { return l.includes("openat") || l.includes("read"); })
+    .map(function(l) {
+      var m = l.match(/openat\([^,]+,\s*"([^"]+)"/) || l.match(/read\(\d+,\s*"([^"]+)"/);
+      return m ? m[1] : null;
+    }).filter(Boolean);
+}
+module.exports = { parseSyscalls };

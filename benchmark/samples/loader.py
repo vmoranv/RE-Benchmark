@@ -72,12 +72,27 @@ class SampleLoader:
     async def _ingest_files(
         self, sample_dir: Path, sample_id: str
     ) -> tuple[UUID, UUID, UUID | None]:
-        """Ingest original.js, obfuscated.js, and optional ground_truth.js."""
+        """Ingest original.js, obfuscated.js, and optional ground_truth.js.
+
+        If ``obfuscated.js`` is missing, auto-generate it from the manifest
+        and ``original.js`` before ingesting.
+        """
         original_path = sample_dir / "original.js"
         obfuscated_path = sample_dir / "obfuscated.js"
-        if not original_path.exists() or not obfuscated_path.exists():
-            msg = f"missing original.js or obfuscated.js in {sample_dir}"
+
+        if not original_path.exists():
+            msg = f"missing original.js in {sample_dir}"
             raise SampleLoadError(msg)
+
+        # Auto-generate obfuscated.js if it does not exist
+        if not obfuscated_path.exists():
+            from benchmark.tools.sample_generator.generator import generate_for_sample
+
+            generated = generate_for_sample(sample_dir)
+            if generated is None:
+                msg = f"failed to auto-generate obfuscated.js in {sample_dir}"
+                raise SampleLoadError(msg)
+            obfuscated_path = generated
 
         orig_id = await self._store.put(
             original_path.read_bytes(),

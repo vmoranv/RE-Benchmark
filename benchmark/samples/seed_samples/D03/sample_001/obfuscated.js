@@ -1,9 +1,11 @@
-// Captured TLS ClientHello (hex) from a Chrome 120 session
-var _0xh="16030100c5010000c10303a4a1b2c3d4e5f6071829304a5b6c7d8e9f" +
-"0011223344556677deadbeefcafebabec00101c011c012c013c014009e009f" +
-"0067006b00330039009c009d003d003c0035002f000a01000088ff01000100" +
-"00001700150000126578616d706c652e636f6d0017000000230000000d0014" +
-"00140804080508060401050102010502001200000005000501000000000033" +
-"00260024001d0020a8b7c9d1e3f506172438596a7b8c9d0e1f2a3b4c5d6e" +
-"7f80919283746a5b4c3d2e1f002b0003020304002d00020101";
-module.exports = { rawHex: _0xh };
+function extractJA3(clientHello) {
+    var version = clientHello.version;
+    var ciphers = clientHello.cipherSuites.join("-");
+    var extensions = clientHello.extensions.map(function(e) { return e.type; }).join("-");
+    var curves = clientHello.extensions.filter(function(e) { return e.type === 10; })
+        .map(function(e) { return e.data.join("-"); }).join("-");
+    var pointFormats = clientHello.extensions.filter(function(e) { return e.type === 11; })
+        .map(function(e) { return e.data.join("-"); }).join("-");
+    return [version, ciphers, extensions, curves, pointFormats].join(",");
+}
+module.exports = { extractJA3 };

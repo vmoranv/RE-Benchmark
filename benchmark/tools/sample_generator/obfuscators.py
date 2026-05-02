@@ -89,7 +89,6 @@ def js_confuser_obfuscate(code: str, level: int = 2) -> str:
             "controlFlowFlattening": True,
             "opaquePredicates": True,
             "dispatcher": True,
-            "ragged": True,
             "minify": True,
         },
     }
@@ -99,7 +98,7 @@ def js_confuser_obfuscate(code: str, level: int = 2) -> str:
     const code = {json.dumps(code)};
     const config = {json.dumps(config)};
     JsConfuser.obfuscate(code, config).then(function(result) {{
-        process.stdout.write(result);
+        process.stdout.write(result.code);
     }}).catch(function(e) {{
         process.stderr.write(e.message);
         process.exit(1);
@@ -117,6 +116,54 @@ def wrap_anti_debug(code: str) -> str:
         "var _0xc=console;console={log:function(){},warn:function(){},error:function(){},clear:function(){}};\n"
         f"{code}"
     )
+
+
+def uglify(code: str) -> str:
+    """Minify using uglify-js."""
+    script = f"""
+    const UglifyJS = require('uglify-js');
+    const code = {json.dumps(code)};
+    const result = UglifyJS.minify(code);
+    if (result.error) {{
+        process.stderr.write(result.error.message);
+        process.exit(1);
+    }}
+    process.stdout.write(result.code);
+    """
+    return _run_node(script)
+
+
+def wasm_compile(wat_code: str) -> str:
+    """Compile WAT (WebAssembly Text) to WASM base64 using wabt."""
+    tmp_wat = Path(__file__).resolve().parents[3] / "_tmp_compile.wat"
+    tmp_wasm = Path(__file__).resolve().parents[3] / "_tmp_compile.wasm"
+    try:
+        tmp_wat.write_text(wat_code, encoding="utf-8")
+        wat2wasm = Path(__file__).resolve().parents[3] / "node_modules" / ".bin" / "wat2wasm"
+        result = subprocess.run(
+            [str(wat2wasm), str(tmp_wat), "-o", str(tmp_wasm)],
+            capture_output=True,
+            text=True,
+            check=False,
+            cwd=Path(__file__).resolve().parents[3],
+        )
+        if result.returncode != 0:
+            raise RuntimeError(f"wat2wasm error: {result.stderr}")
+        wasm_bytes = tmp_wasm.read_bytes()
+        return base64.b64encode(wasm_bytes).decode()
+    finally:
+        tmp_wat.unlink(missing_ok=True)
+        tmp_wasm.unlink(missing_ok=True)
+
+
+def minify_with_beautify(code: str) -> str:
+    """Format code with js-beautify (for readability baseline)."""
+    script = f"""
+    const js_beautify = require('js-beautify').js;
+    const code = {json.dumps(code)};
+    process.stdout.write(js_beautify(code));
+    """
+    return _run_node(script)
 
 
 def encode_base64_strings(code: str) -> str:

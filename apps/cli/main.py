@@ -171,6 +171,22 @@ def samples_list(
     console.print(table)
 
 
+@app.command()
+def init() -> None:
+    """Initialize benchmark: generate all samples from seed data."""
+    from benchmark.tools.sample_generator.generator import generate_all
+
+    seed_root = Path("benchmark/samples/seed_samples").resolve()
+    console.print("[cyan]Generating obfuscated samples from seed data...[/cyan]")
+    results = generate_all(seed_root)
+    if results:
+        console.print(f"[green]Generated {len(results)} samples:[/green]")
+        for p in results:
+            console.print(f"  {p.parent.name}/{p.name}")
+    else:
+        console.print("[green]All samples already up to date.[/green]")
+
+
 @app.command(name="generate-samples")
 def generate_samples(
     dimension: str = typer.Option("D01", help="Dimension code (e.g. D01, D05)"),

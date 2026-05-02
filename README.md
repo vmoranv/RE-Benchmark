@@ -4,7 +4,7 @@
 >
 > Extending [JsDeObsBench](https://arxiv.org/abs/2406.06636) into a unified, public, reproducible benchmark covering the full Web/JS reverse-engineering pipeline.
 
-[![CI](https://github.com/js-re-bench/js-re-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/js-re-bench/js-re-bench/actions/workflows/ci.yml)
+[![CI](https://github.com/vmoranv/RE-Benchmark/actions/workflows/ci.yml/badge.svg)](https://github.com/vmoranv/RE-Benchmark/actions/workflows/ci.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
@@ -35,8 +35,8 @@ It is built around three pillars:
 
 ```bash
 # 1. Clone and enter the repo
-git clone https://github.com/js-re-bench/js-re-bench.git
-cd js-re-bench
+git clone https://github.com/vmoranv/RE-Benchmark.git
+cd RE-Benchmark
 
 # 2. Install Python dependencies (creates .venv automatically)
 uv sync

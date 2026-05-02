@@ -7,6 +7,7 @@ of all 18 evaluation dimensions.
 
 from __future__ import annotations
 
+import os
 from functools import lru_cache
 from pathlib import Path
 
@@ -29,8 +30,35 @@ from benchmark.core.sandbox.node_runner import NodeSubprocessRunner
 # ---------------------------------------------------------------------------
 
 
+def _is_pg_configured() -> bool:
+    """Return ``True`` when DATABASE_URL is explicitly set in the environment."""
+    return bool(os.environ.get("DATABASE_URL")) or bool(os.environ.get("JSREBENCH_DATABASE_URL"))
+
+
+@lru_cache(maxsize=1)
+def _pg_session_factory():
+    """Lazily build an async session factory bound to PostgreSQL."""
+    from benchmark.core.persistence.session import make_engine, make_sessionmaker
+
+    from .settings import settings
+
+    engine = make_engine(settings.database_url)
+    return make_sessionmaker(engine)
+
+
+@lru_cache(maxsize=1)
+def get_pg_repository() -> RunRepository:
+    """Return a :class:`PostgresRunRepository` backed by the configured DB."""
+    from benchmark.core.persistence.repositories.pg_runs import PostgresRunRepository
+
+    return PostgresRunRepository(_pg_session_factory())
+
+
 @lru_cache(maxsize=1)
 def get_repository() -> RunRepository:
+    """Return PG-backed repo when DATABASE_URL is configured, else in-memory."""
+    if _is_pg_configured():
+        return get_pg_repository()
     return InMemoryRunRepository()
 
 

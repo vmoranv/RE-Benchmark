@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     anthropic_api_key: str | None = None
     anthropic_default_model: str = "claude-opus-4-7-20260101"
 
+    openai_api_key: str | None = None
+    openai_default_model: str = "gpt-4o"
+
     log_level: str = "INFO"
 
 

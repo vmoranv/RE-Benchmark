@@ -1,0 +1,15 @@
+id: sample_001
+dimension_code: D16
+obfuscation_level: L3
+obfuscator: manual
+description: "Captured HTTP request/response pairs from mitmproxy."
+semantic_test_cases:
+  - name: extract user role
+    args: []
+    expected: "superadmin"
+  - name: extract session cookie
+    args: []
+    expected: "s%3Aabc123.def456"
+  - name: extract permissions
+    args: []
+    expected: ["read", "write", "delete"]

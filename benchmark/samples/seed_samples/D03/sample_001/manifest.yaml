@@ -1,0 +1,4 @@
+id: sample_001
+dimension_code: D03
+obfuscation_level: L3
+description: TLS ClientHello fingerprint analysis and JA3 hash extraction.

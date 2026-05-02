@@ -1,0 +1,12 @@
+id: sample_001
+dimension_code: D02
+obfuscation_level: L5
+obfuscator: jsvmp-custom
+description: Discount calculator encoded as JSVMP bytecode with custom VM interpreter.
+semantic_test_cases:
+  - name: member 100
+    args: [100, true]
+    expected: 85
+  - name: guest 200
+    args: [200, false]
+    expected: 190

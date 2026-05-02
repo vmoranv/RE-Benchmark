@@ -1,0 +1,11 @@
+id: sample_001
+dimension_code: D04
+obfuscation_level: L3
+description: WASM module with SourceMap reference for recovery.
+semantic_test_cases:
+  - name: add 2+3
+    args: [2, 3]
+    expected: 5
+  - name: add 10+20
+    args: [10, 20]
+    expected: 30

@@ -175,5 +175,17 @@ def main() -> None:
     app()
 
 
+@app.command()
+def serve_challenges(
+    host: str = "0.0.0.0",
+    port: int = 3000,
+) -> None:
+    """Start the challenge web server for LLM RE testing."""
+    import uvicorn
+
+    console.print(f"[green]Starting challenge server on {host}:{port}[/green]")
+    uvicorn.run("apps.challenge_server.server:app", host=host, port=port, log_level="info")
+
+
 if __name__ == "__main__":
     main()

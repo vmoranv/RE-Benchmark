@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Secure Portal</title>
+<style>body{font-family:system-ui;max-width:480px;margin:2em auto;padding:0 1em}
+input,button{font-size:1em;margin:.3em 0;padding:.4em}button{cursor:pointer}
+#result{margin-top:1em;padding:.6em;background:#f0f0f0;border-radius:4px}
+#status{color:#666;font-size:.9em}</style>
+</head>
+<body>
+<h1>Secure Portal</h1>
+<p>Price calculator with integrity protection:</p>
+<input id="price" type="number" placeholder="Price" value="100">
+<label><input id="member" type="checkbox" checked> Member</label><br>
+<button onclick="calc()">Calculate</button>
+<div id="result"></div>
+<div id="status"></div>
+<script>
+// Anti-tamper protection
+setInterval(function(){debugger;},1000);
+(function(){
+  var _t0=performance.now();
+  (function(){return arguments.callee.toString();})();
+  var _dt=performance.now()-_t0;
+  if(_dt>100){document.body.innerHTML='<h1>Security Alert</h1><p>Debugging detected.</p>';throw new Error('blocked');}
+})();
+var _origConsole=console;
+console={log:function(){},warn:function(){},error:function(){},clear:function(){}};
+var _checkDevtools=function(){
+  var w1=window.outerWidth-window.innerWidth>160;
+  var w2=window.outerHeight-window.innerHeight>160;
+  if(w1||w2){_origConsole.log('monitoring active');}
+};
+setInterval(_checkDevtools,2000);
+Error.prepareStackTrace=function(e,s){return s;};
+// Business logic
+function _0xf(p,m){var r1=0.15,r2=0.05;return m?p*(1-r1):p*(1-r2);}
+function calc(){var p=parseFloat(document.getElementById('price').value);
+var m=document.getElementById('member').checked;var r=_0xf(p,m);
+document.getElementById('result').textContent='Final price: $'+r.toFixed(2);
+document.getElementById('status').textContent='Protection active';}
+</script>
+</body>
+</html>

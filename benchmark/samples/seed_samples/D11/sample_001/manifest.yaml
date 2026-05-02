@@ -1,0 +1,4 @@
+id: sample_001
+dimension_code: D11
+obfuscation_level: L3
+description: strace-like syscall trace correlated with JS operations.

@@ -1,0 +1,4 @@
+id: sample_001
+dimension_code: D07
+obfuscation_level: L2
+description: Canvas 2D rendering with hidden draw calls.

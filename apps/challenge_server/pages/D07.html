@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Canvas Renderer</title>
+<style>body{font-family:system-ui;max-width:640px;margin:2em auto;padding:0 1em}
+canvas{border:1px solid #ccc;border-radius:4px;margin-top:1em}
+#info{margin-top:.5em;color:#666;font-size:.85em}</style>
+</head>
+<body>
+<h1>Canvas Renderer</h1>
+<p>Interactive canvas — inspect rendering pipeline:</p>
+<canvas id="cv" width="500" height="300"></canvas>
+<div id="info">Rendered at <span id="ts"></span></div>
+<script>
+var cv=document.getElementById('cv');
+var ctx=cv.getContext('2d');
+function _0r(){
+  var _0a=['#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6'];
+  ctx.clearRect(0,0,500,300);
+  ctx.fillStyle='#1a1a2e';ctx.fillRect(0,0,500,300);
+  for(var i=0;i<5;i++){
+    ctx.beginPath();
+    ctx.fillStyle=_0a[i];
+    ctx.arc(50+i*95,150,35,0,Math.PI*2);
+    ctx.fill();
+    ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+  }
+  ctx.fillStyle='#fff';ctx.font='14px monospace';
+  ctx.fillText('GL_VERSION: WebGL 2.0',20,280);
+  ctx.fillText('RENDERER: SwiftShader',20,260);
+  document.getElementById('ts').textContent=new Date().toISOString();
+}
+_0r();
+setInterval(_0r,3000);
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+id: sample_001
+dimension_code: D13
+obfuscation_level: L3
+obfuscator: manual
+description: "Hex memory dump with embedded data structures."
+semantic_test_cases:
+  - name: find string at offset 0x00
+    args: []
+    expected: "Hello"
+  - name: find string at offset 0x20
+    args: []
+    expected: "Alice"
+  - name: find numeric at offset 0x40
+    args: []
+    expected: 1000

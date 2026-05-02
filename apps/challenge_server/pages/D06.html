@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>API Dashboard</title>
+<style>body{font-family:system-ui;max-width:600px;margin:2em auto;padding:0 1em}
+button{font-size:1em;padding:.4em 1em;cursor:pointer;margin:.3em}
+#log{margin-top:1em;padding:.6em;background:#1a1a2e;color:#0f0;border-radius:4px;
+font-family:monospace;font-size:.85em;min-height:120px;white-space:pre-wrap}</style>
+</head>
+<body>
+<h1>API Dashboard</h1>
+<p>Service interface — inspect network activity:</p>
+<button onclick="fetchData()">Fetch Data</button>
+<button onclick="xhrRequest()">XHR Request</button>
+<button onclick="genToken()">Generate Token</button>
+<div id="log">Ready.\n</div>
+<script>
+var _0l=document.getElementById('log');
+function _0p(m){_0l.textContent+=m+'\n';_0l.scrollTop=_0l.scrollHeight;}
+// Hooked fetch
+var _0f=window.fetch;
+window.fetch=function(u,o){
+  _0p('[fetch] '+u);
+  return _0f(u,o).then(function(r){_0p('[fetch] '+r.status+' '+r.statusText);return r;});
+};
+// XHR
+function xhrRequest(){var x=new XMLHttpRequest();
+  x.open('GET','/api/v1/dimensions/');
+  x.onload=function(){_0p('[XHR] '+x.status+': '+x.responseText.substring(0,80));};
+  x.send();}
+// Crypto
+function genToken(){var a=new Uint8Array(16);crypto.getRandomValues(a);
+  var t=Array.from(a,function(b){return b.toString(16).padStart(2,'0');}).join('');
+  _0p('[crypto] Token: '+t);}
+// Fetch data
+function fetchData(){fetch('/api/v1/dimensions/').catch(function(){_0p('[fetch] error (expected)');});}
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Discount Calculator</title>
+<style>body{font-family:system-ui;max-width:480px;margin:2em auto;padding:0 1em}
+input,button{font-size:1em;margin:.3em 0;padding:.4em}button{cursor:pointer}
+#result{margin-top:1em;padding:.6em;background:#f0f0f0;border-radius:4px}</style>
+</head>
+<body>
+<h1>Discount Calculator</h1>
+<p>Enter price and membership status:</p>
+<input id="price" type="number" placeholder="Price" value="100">
+<label><input id="member" type="checkbox" checked> Member</label><br>
+<button onclick="calc()">Calculate</button>
+<div id="result"></div>
+<script>
+var _0x3b9a=['BASE','TIMES','MEMBER_RATE','GUEST_RATE','calculateDiscount'];var _0x12fe=function(_0xa,_0xb){_0xa=_0xa-0x0;return _0x3b9a[_0xa];};(function(_0x4d,_0x5e){function _0x29(){return _0x12fe;}var _0x77=_0x29();while(!![]){try{var _0x88=parseInt(_0x77('0x0'))*0x1+parseInt(_0x77('0x1'))*0x2;if(_0x88===_0x5e){break;}else{_0x4d['push'](_0x4d['shift']());}}catch(_0xff){_0x4d['push'](_0x4d['shift']());}}}(_0x3b9a,0x539));function _0x1a(_0xp,_0xm){var _0xr1=0.15,_0xr2=0.05;return _0xm?_0xp*(0x1-_0xr1):_0xp*(0x1-_0xr2);}
+function calc(){var p=parseFloat(document.getElementById('price').value);var m=document.getElementById('member').checked;var r=_0x1a(p,m);document.getElementById('result').textContent='Final price: $'+r.toFixed(2);}
+</script>
+</body>
+</html>

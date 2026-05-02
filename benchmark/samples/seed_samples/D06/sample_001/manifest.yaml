@@ -1,0 +1,4 @@
+id: sample_001
+dimension_code: D06
+obfuscation_level: L2
+description: Target API endpoints for hook injection quality testing.

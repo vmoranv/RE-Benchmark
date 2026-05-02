@@ -1,0 +1,12 @@
+id: sample_001
+dimension_code: D14
+obfuscation_level: L3
+obfuscator: manual
+description: "JavaScript execution trace with call stack and return values."
+semantic_test_cases:
+  - name: replay full trace
+    args: []
+    expected: "init -> loadConfig -> render -> applyTheme with correct return values"
+  - name: extract call order
+    args: []
+    expected: ["init", "loadConfig", "render", "applyTheme"]

@@ -1,0 +1,12 @@
+id: sample_001
+dimension_code: D18
+obfuscation_level: L4
+obfuscator: manual-heavy
+description: "Heavily obfuscated code requiring deep semantic understanding to explain behavior."
+semantic_test_cases:
+  - name: enqueue and dequeue
+    args: []
+    expected: "priority queue returns highest priority item first"
+  - name: weighted schedule order
+    args: []
+    expected: "items processed in priority order with weight-based scheduling"

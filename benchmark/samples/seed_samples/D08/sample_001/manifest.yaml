@@ -1,0 +1,4 @@
+id: sample_001
+dimension_code: D08
+obfuscation_level: L3
+description: Simulated V8 heap snapshot for internal state inspection.

@@ -1,0 +1,11 @@
+id: sample_001
+dimension_code: D05
+obfuscation_level: L3
+description: Business logic protected by anti-debugging techniques.
+semantic_test_cases:
+  - name: basic 100
+    args: [100, 0.1, 0]
+    expected: 110
+  - name: with discount
+    args: [100, 0.1, 20]
+    expected: 90

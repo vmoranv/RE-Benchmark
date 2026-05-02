@@ -1,0 +1,15 @@
+id: sample_001
+dimension_code: D15
+obfuscation_level: L3
+obfuscator: manual
+description: "Evidence from HTTP headers, JS globals, and DOM elements requiring cross-domain correlation."
+semantic_test_cases:
+  - name: correlate session identity
+    args: []
+    expected: "links X-Session-Token JWT to __SESSION__.userId"
+  - name: find CSRF correlation
+    args: []
+    expected: "links csrf-token meta to session"
+  - name: extract build version
+    args: []
+    expected: "2024.03.15-abc1234"

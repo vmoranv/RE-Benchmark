@@ -1,0 +1,4 @@
+id: sample_001
+dimension_code: D10
+obfuscation_level: L3
+description: Chrome DevTools Protocol logs from Android WebView debugging.

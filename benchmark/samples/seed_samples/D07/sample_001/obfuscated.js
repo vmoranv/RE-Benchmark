@@ -1,0 +1,5 @@
+var _0xd=[{t:0,a:[10,10,80,60],c:"#e74c3c"},{t:1,a:[200,100,40],c:"#3498db"},{t:0,a:[300,50,100,80],c:"#2ecc71"}];
+function _0xr(_0xc){_0xd.forEach(function(_0xs){_0xc.fillStyle=_0xs.c;
+if(_0xs.t===0){_0xc.fillRect(_0xs.a[0],_0xs.a[1],_0xs.a[2],_0xs.a[3]);}
+else{_0xc.beginPath();_0xc.arc(_0xs.a[0],_0xs.a[1],_0xs.a[2],0,6.283);_0xc.fill();}});}
+module.exports={renderScene:_0xr};

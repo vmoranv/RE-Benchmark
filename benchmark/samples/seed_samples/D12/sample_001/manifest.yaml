@@ -1,0 +1,15 @@
+id: sample_001
+dimension_code: D12
+obfuscation_level: L3
+obfuscator: manual
+description: "Binary WebSocket protocol frames for state machine reconstruction."
+semantic_test_cases:
+  - name: decode text frame
+    args: ["810748656c6c6f21"]
+    expected: { type: "text", payload: "Hello!" }
+  - name: decode binary frame
+    args: ["8205776f726c64"]
+    expected: { type: "binary", payload: "world" }
+  - name: decode close frame
+    args: ["8800"]
+    expected: { type: "close", payload: "" }

@@ -1,0 +1,33 @@
+name: Feature Request
+description: Propose a new feature or dimension for JS-RE-Bench
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Motivation
+      description: What gap or limitation does this address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution
+      description: Describe your idea
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - New Evaluation Dimension
+        - New Metric
+        - New Qualification Challenge
+        - Model Adapter (Anthropic/OpenAI/etc.)
+        - Sample Pipeline
+        - API / CLI
+        - Frontend Dashboard
+        - Infrastructure / CI
+        - Documentation
+        - Other

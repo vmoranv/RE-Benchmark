@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussion
+    url: https://github.com/js-re-bench/js-re-bench/discussions
+    about: Ask questions, share results, or discuss evaluation methodology.
+  - name: Documentation
+    url: https://js-re-bench.readthedocs.io
+    about: Read the full platform documentation before opening an issue.

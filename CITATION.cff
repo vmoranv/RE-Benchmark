@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "JS-RE-Bench: A Comprehensive Benchmark for JS/Web Reverse Engineering"
+message: "If you use JS-RE-Bench in academic work, please cite this software."
+type: software
+authors:
+  - family-names: "JS-RE-Bench Maintainers"
+    given-names: ""
+repository-code: "https://github.com/js-re-bench/js-re-bench"
+abstract: >-
+  JS-RE-Bench extends JsDeObsBench into a unified, public, reproducible
+  benchmark platform covering 18 reverse-engineering dimensions of
+  JavaScript/Web protection schemes — including deobfuscation, JSVMP
+  unpacking, anti-debug bypass, obfuscator correctness verification, and
+  LLM semantic-understanding probing.
+keywords:
+  - reverse engineering
+  - javascript
+  - benchmark
+  - llm evaluation
+  - obfuscation
+  - jsvmp
+license: Apache-2.0
+version: 0.1.0
+date-released: "2026-05-02"

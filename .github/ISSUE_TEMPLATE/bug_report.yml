@@ -1,0 +1,66 @@
+name: Bug Report
+description: Report a bug in the JS-RE-Bench platform
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please fill out the sections below.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened? What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: |
+        1. Run `bench run -d D01 --execute`
+        2. ...
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `bench version`
+      placeholder: "js-re-bench 0.1.0"
+  - type: dropdown
+    id: dimension
+    attributes:
+      label: Dimension
+      description: Which evaluation dimension is affected?
+      options:
+        - D01 Deobfuscation
+        - D02 JSVMP
+        - D03 TLS Fingerprint
+        - D04 WASM/SourceMap
+        - D05 Anti-Debug
+        - D06 Hook Injection
+        - D07 Canvas/WebGL
+        - D08 V8 Internals
+        - D09 Native Binary
+        - D10 Android WebView
+        - D11 Syscall Monitor
+        - D12 Protocol Inference
+        - D13 Memory Scanning
+        - D14 Execution Trace
+        - D15 Cross-Domain
+        - D16 HTTP Proxy
+        - D17 Obfuscator Correctness
+        - D18 LLM Semantic Depth
+        - Infrastructure / CI
+        - Other
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      description: Paste any error output or stack traces
+      render: shell

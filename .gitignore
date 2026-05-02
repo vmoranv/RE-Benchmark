@@ -1,0 +1,91 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# UV / Poetry
+.uv/
+poetry.lock
+uv.lock
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+
+# Ruff
+.ruff_cache/
+
+# Node
+node_modules/
+.pnp.*
+.yarn/
+*.tsbuildinfo
+
+# Vite / Frontend
+frontend/dist/
+frontend/.vite/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Local config
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# Database
+*.sqlite
+*.db
+
+# Docker
+*.pid
+
+# Generated
+benchmark/core/persistence/alembic/versions/__pycache__/
+
+# Artifacts (use Git LFS or external storage)
+artifacts/
+runs/
+samples_local/
+
+# Blind test bundle (must NEVER be committed)
+benchmark/samples/blind/
+
+# OS
+Thumbs.db
+desktop.ini
+
+# Local agent / IDE context (not for remote)
+.claude/
+.context/
+.claude-plan
+
+# Local design docs (agent-readable, not committed)
+DESIGN.md

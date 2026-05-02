@@ -1,0 +1,55 @@
+name: Sample Contribution
+description: Submit a new obfuscation sample for the benchmark
+labels: ["sample", "triage"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Sample Description
+      description: Describe the original code and obfuscation technique
+    validations:
+      required: true
+  - type: dropdown
+    id: dimension
+    attributes:
+      label: Target Dimension
+      options:
+        - D01 Deobfuscation
+        - D02 JSVMP
+        - D03 TLS Fingerprint
+        - D04 WASM/SourceMap
+        - D05 Anti-Debug
+        - D06 Hook Injection
+        - D07 Canvas/WebGL
+        - D08 V8 Internals
+        - D09 Native Binary
+        - D10 Android WebView
+        - D11 Syscall Monitor
+        - D12 Protocol Inference
+        - D13 Memory Scanning
+        - D14 Execution Trace
+        - D15 Cross-Domain
+        - D16 HTTP Proxy
+        - D17 Obfuscator Correctness
+        - D18 LLM Semantic Depth
+    validations:
+      required: true
+  - type: dropdown
+    id: level
+    attributes:
+      label: Obfuscation Level
+      options:
+        - L1 Lexical
+        - L2 Structural
+        - L3 Data
+        - L4 Semantic
+        - L5 Virtualization
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source Attribution
+      description: Where does this sample come from? (Public CDN, NPM, synthetic, etc.)
+    validations:
+      required: true

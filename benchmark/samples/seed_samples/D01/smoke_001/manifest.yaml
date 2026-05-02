@@ -1,0 +1,18 @@
+id: smoke_001
+dimension_code: D01
+obfuscation_level: L2
+obfuscator: javascript-obfuscator
+obfuscator_version: "4.x"
+obfuscator_config:
+  controlFlowFlattening: false
+  stringArray: true
+  stringArrayEncoding:
+    - base64
+description: Tiny smoke sample for the M1 vertical-slice run loop.
+semantic_test_cases:
+  - name: member 100
+    args: [100, true]
+    expected: 85
+  - name: guest 200
+    args: [200, false]
+    expected: 190

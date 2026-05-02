@@ -1,0 +1,19 @@
+Your previous attempt did not pass the objective verification. Below is a
+summary of the failures detected by the static analyzer:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Failures:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **revise** your previous output to fix these issues while keeping
+the original semantics intact. Output ONE fenced ```javascript ... ``` block.
+
+Original obfuscated code (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

@@ -20,7 +20,3 @@
 *.pdf binary
 *.tar.gz binary
 *.zip binary
-
-# Git LFS for large samples
-benchmark/samples/seed_samples/**/*.js filter=lfs diff=lfs merge=lfs -text
-benchmark/samples/seed_samples/**/*.json filter=lfs diff=lfs merge=lfs -text

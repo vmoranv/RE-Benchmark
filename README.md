@@ -11,24 +11,73 @@
 ## Overview
 
 JS-RE-Bench evaluates LLMs and tools across 18 reverse-engineering dimensions:
-deobfuscation · JSVMP unpacking · TLS fingerprinting · WASM/SourceMap recovery ·
-anti-debug bypass · hook quality · Canvas/WebGL · V8 internals · native instrumentation ·
-Android WebView · syscall correlation · protocol inference · memory scanning ·
-trace replay · cross-domain evidence · HTTP proxy · obfuscator correctness ·
+deobfuscation, JSVMP unpacking, TLS fingerprinting, WASM/SourceMap recovery,
+anti-debug bypass, hook quality, Canvas/WebGL, V8 internals, native instrumentation,
+Android WebView, syscall correlation, protocol inference, memory scanning,
+trace replay, cross-domain evidence, HTTP proxy, obfuscator correctness,
 LLM semantic probing.
 
 It is built around three pillars:
 - **15 quantitative metrics** (6 general + 9 specialized including `M8` semantic fidelity, `M9` LLM decay rate)
 - **12 qualification challenges** (Q1-Q12) executed automatically in CI
-- **5-tier obfuscation taxonomy** (L1 lexical → L5 virtualization)
+- **5-tier obfuscation taxonomy** (L1 lexical through L5 virtualization)
 
 ## Quick Start
 
 ### Prerequisites
-- Docker 24+ and Docker Compose v2
-- (Optional, for development) Python 3.11+, Node.js 22+
 
-### One-command launch (Q1 Headless Reproducibility)
+- [uv](https://docs.astral.sh/uv/) package manager
+- Python 3.11+ (managed by uv automatically)
+- Node.js 22+ (for sandbox-based semantic test execution)
+- Docker 24+ and Docker Compose v2 (for full stack deployment)
+
+### Development Setup
+
+```bash
+# 1. Clone and enter the repo
+git clone https://github.com/js-re-bench/js-re-bench.git
+cd js-re-bench
+
+# 2. Install Python dependencies (creates .venv automatically)
+uv sync
+
+# 3. Install pre-commit hooks (ruff, mypy, format checks)
+uv run pre-commit install
+
+# 4. Verify everything works
+uv run pytest -v                    # 31 tests should pass
+uv run pre-commit run --all-files   # All hooks should pass
+
+# 5. Run the CLI
+uv run bench version                # Print version
+uv run bench dimensions list        # List all 18 dimensions
+uv run bench samples list           # List loaded samples for D01
+```
+
+### Expected Results
+
+After `uv sync && uv run pre-commit install`:
+- `uv run pytest` — 31 passed, 0 failed
+- `uv run pre-commit run --all-files` — 9 hooks, all Passed
+- `uv run bench dimensions list` — Rich table with 18 dimensions
+- `uv run python -c "from apps.api.container import get_dimension_registry; r = get_dimension_registry(); print(len(r))"` — prints `18`
+
+### Running a Benchmark
+
+```bash
+# Mock model (deterministic, no API key needed)
+uv run bench run --dimension D01 --execute
+
+# With Anthropic Claude (requires ANTHROPIC_API_KEY)
+export ANTHROPIC_API_KEY=sk-ant-...
+uv run bench run --dimension D01 --model anthropic/claude-sonnet-4-6 --execute
+
+# With OpenAI GPT (requires OPENAI_API_KEY)
+export OPENAI_API_KEY=sk-...
+uv run bench run --dimension D01 --model openai/gpt-4o --execute
+```
+
+### Docker Deployment (Q1 Headless Reproducibility)
 
 ```bash
 docker compose -f infra/compose/docker-compose.yml up --abort-on-container-exit
@@ -40,48 +89,57 @@ The stack exposes:
 - **Postgres**: localhost:5432
 - **Redis**: localhost:6379
 
-### CLI usage
+### API Endpoints
 
-```bash
-# Run a benchmark for dimension D01 with Anthropic Claude
-bench run --dimension D01 --model anthropic/claude-opus-4-7 --sample-id <uuid>
-
-# List available dimensions
-bench dimensions list
-
-# Generate a report
-bench report --run-id <uuid> --format pdf
-```
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/v1/health` | Health check |
+| GET | `/api/v1/dimensions` | List all 18 dimensions |
+| POST | `/api/v1/runs` | Submit a benchmark run |
+| GET | `/api/v1/runs` | List runs |
+| GET | `/api/v1/runs/{id}` | Get run details |
 
 ## Architecture
 
 JS-RE-Bench follows a **Plugin Modular Monolith + Isolated Workers** design:
 
 ```
-CLI / REST / MCP
-       ↓
+CLI / REST API
+       |
   FastAPI Control Plane
-    ↓              ↓
+    |              |
 PostgreSQL      Redis
-    ↓              ↓
+    |              |
 Artifact CAS   Celery Workers
-                  ↓
+                  |
             Docker Sandbox Pool
         (jsvmp-node / browser-anti-debug)
 ```
 
-See [`docs/architecture.md`](./docs/architecture.md) and [`.claude/plan/js-re-bench.md`](./.claude/plan/js-re-bench.md) for the full design.
+Key design decisions documented in `docs/adr/`:
+- ADR-0001: Plugin Modular Monolith over Microservices
+- ADR-0002: Engine vs Model Determinism Separation
+
+## Supported Models
+
+| Provider | Model ID Format | Example |
+|----------|----------------|---------|
+| Mock (deterministic) | `mock/*` | `mock/echo-v1` |
+| Anthropic | `anthropic/*` | `anthropic/claude-sonnet-4-6` |
+| OpenAI | `openai/*` | `openai/gpt-4o` |
 
 ## Status
 
-This project is in **early development** (M1 Skeleton milestone).
-
 | Milestone | Status |
 |-----------|:------:|
-| M1: Vertical-slice skeleton (D1 + Q1) | 🟡 In Progress |
-| M2: 4 core dimensions (D1 / D2 / D5 / D17-18) | ⬜ Planned |
-| M3: 14 placeholder dimensions + Q5-Q11 | ⬜ Planned |
-| M4: Performance, accessibility, report export | ⬜ Planned |
+| M1: Vertical-slice skeleton | Done |
+| M2: 18 dimensions + multi-model + sandbox | Done |
+| M3: PostgreSQL persistence + real LLM runs | Planned |
+| M4: Performance, accessibility, report export | Planned |
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines. Pre-commit hooks enforce code quality automatically.
 
 ## Citing
 

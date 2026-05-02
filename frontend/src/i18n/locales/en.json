@@ -1,0 +1,12 @@
+{
+  "app.name": "JS-RE-Bench",
+  "app.tagline": "JS/Web Reverse-Engineering Benchmark",
+  "nav.leaderboard": "Leaderboard",
+  "nav.runs": "Runs",
+  "nav.samples": "Samples",
+  "nav.submit": "Submit",
+  "nav.dashboard": "Dashboard",
+  "nav.reports": "Reports",
+  "leaderboard.empty": "No runs yet. Submit a benchmark from the Submit page.",
+  "common.loading": "Loading…"
+}

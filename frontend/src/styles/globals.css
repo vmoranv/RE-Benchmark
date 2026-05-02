@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bench-radius: 8px;
+  }
+  body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+  code,
+  pre {
+    font-feature-settings: "calt" 0;
+  }
+}
+
+@layer components {
+  .bench-card {
+    @apply rounded-lg border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950;
+  }
+  .bench-tag {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+  .bench-tag-pass { @apply bench-tag bg-bench-pass/10 text-bench-pass; }
+  .bench-tag-warn { @apply bench-tag bg-bench-warn/10 text-amber-700 dark:text-amber-300; }
+  .bench-tag-fail { @apply bench-tag bg-bench-fail/10 text-red-700 dark:text-red-300; }
+}

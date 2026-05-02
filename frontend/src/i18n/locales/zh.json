@@ -1,0 +1,12 @@
+{
+  "app.name": "JS-RE-Bench",
+  "app.tagline": "JS/Web 逆向综合基准平台",
+  "nav.leaderboard": "排行榜",
+  "nav.runs": "评测",
+  "nav.samples": "样本",
+  "nav.submit": "提交评测",
+  "nav.dashboard": "仪表盘",
+  "nav.reports": "学术报告",
+  "leaderboard.empty": "暂无评测数据。请从「提交评测」页面发起一次基准测试。",
+  "common.loading": "加载中…"
+}

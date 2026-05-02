@@ -1,0 +1,15 @@
+image: ghcr.io/js-re-bench/sandbox-jsvmp:0.1.0
+runtime_args:
+  - "--rm"
+  - "--read-only"
+  - "--network=none"
+  - "--cap-drop=ALL"
+  - "--security-opt=no-new-privileges"
+  - "--pids-limit=128"
+  - "--cpus=1.0"
+  - "--tmpfs=/tmp:size=64m,mode=1777"
+  - "--user=1000:1000"
+entrypoint:
+  - "node"
+  - "/home/runner/runner/index.js"
+timeout_seconds: 60

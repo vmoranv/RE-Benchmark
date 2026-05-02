@@ -1,0 +1,24 @@
+# syntax=docker/dockerfile:1.7
+FROM python:3.12-slim
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libpq5 build-essential libpq-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY pyproject.toml ./
+RUN pip install --no-cache-dir \
+        "celery[redis]>=5.6.0" "redis>=7.4.0" "sqlalchemy>=2.0.49" \
+        "psycopg[binary]>=3.3.0" "pydantic>=2.12.0" "pydantic-settings>=2.6.0" \
+        "anthropic>=0.45.0" "httpx>=0.28.0" "tenacity>=9.0.0" \
+        "structlog>=25.0.0" "jinja2>=3.1.0" "pyyaml>=6.0.0"
+
+COPY apps ./apps
+COPY benchmark ./benchmark
+
+RUN useradd --create-home --uid 1000 bench
+USER bench
+
+CMD ["celery", "-A", "apps.worker.celeryconfig:celery_app", "worker", "--loglevel=info", "-Q", "control,llm,metric,judge"]

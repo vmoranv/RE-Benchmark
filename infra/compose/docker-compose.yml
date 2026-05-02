@@ -1,0 +1,72 @@
+name: js-re-bench
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: bench
+      POSTGRES_PASSWORD: bench
+      POSTGRES_DB: jsrebench
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bench -d jsrebench"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.api
+    environment:
+      JSREBENCH_DATABASE_URL: postgresql+psycopg://bench:bench@db:5432/jsrebench
+      JSREBENCH_REDIS_URL: redis://redis:6379/0
+      JSREBENCH_ARTIFACT_ROOT: /var/lib/jsrebench/artifacts
+      JSREBENCH_LOG_LEVEL: INFO
+    depends_on:
+      db: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    ports:
+      - "8000:8000"
+    volumes:
+      - artifacts:/var/lib/jsrebench/artifacts
+
+  worker:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.worker
+    environment:
+      JSREBENCH_DATABASE_URL: postgresql+psycopg://bench:bench@db:5432/jsrebench
+      JSREBENCH_REDIS_URL: redis://redis:6379/0
+      JSREBENCH_ARTIFACT_ROOT: /var/lib/jsrebench/artifacts
+    depends_on:
+      api: { condition: service_started }
+      redis: { condition: service_healthy }
+    volumes:
+      - artifacts:/var/lib/jsrebench/artifacts
+
+  frontend:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.frontend
+    depends_on:
+      api: { condition: service_started }
+    ports:
+      - "5173:80"
+
+volumes:
+  db_data:
+  artifacts:

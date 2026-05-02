@@ -1,0 +1,16 @@
+image: ghcr.io/js-re-bench/sandbox-anti-debug:0.1.0
+runtime_args:
+  - "--rm"
+  - "--read-only"
+  - "--network=none"
+  - "--cap-drop=ALL"
+  - "--security-opt=no-new-privileges"
+  - "--pids-limit=256"
+  - "--cpus=2.0"
+  - "--tmpfs=/tmp:size=128m,mode=1777"
+  - "--shm-size=512m"
+  - "--user=1000:1000"
+entrypoint:
+  - "node"
+  - "/home/runner/runner/probe.js"
+timeout_seconds: 90

@@ -1,0 +1,17 @@
+Refine your previous output into a **clean, final syscall monitoring and JS
+correlation report**:
+
+1. Syscall capture setup — correct tool invocation with flags for a JS process.
+2. Trace parsing logic — extraction of syscall entries with metadata.
+3. JS-to-syscall correlation — explicit mapping of each JS function to its syscall
+   footprint, including call frequency and latency where possible.
+4. Summary statistics — total syscalls per JS function, most expensive calls, etc.
+
+Output ONE fenced code block with the final consolidated analysis. Remove any
+incorrect or incomplete correlation logic from earlier rounds.
+
+Previous output:
+
+```
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

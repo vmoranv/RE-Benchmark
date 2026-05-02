@@ -1,0 +1,25 @@
+Your previous hook implementation did not pass the objective verification.
+Below is a summary of the failures:
+
+{% for r in prior %}
+Round {{ r.round_no }} -- grade={{ r.grade }} score={{ r.score }}
+Failures:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Common issues to fix:
+- Missing original function preservation (hook breaks the target API).
+- `toString()` leak — hooked function does not pass `fn.toString()` check.
+- Missing argument forwarding via `...args` / `arguments`.
+- Hooks are globally detectable (e.g. `window.__hooks`).
+
+Please **revise** your hook code to fix these issues. Output ONE fenced
+```javascript ... ``` block.
+
+Original target code (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

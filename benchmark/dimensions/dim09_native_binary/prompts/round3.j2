@@ -1,0 +1,22 @@
+Take your latest Frida script and produce a **clean, production-ready final
+version**. Ensure:
+
+1. All hooks are properly scoped — use `Module.findBaseAddress()` or
+   `Process.findModuleByName()` for reliable address resolution.
+2. `onEnter` logs: timestamp, function name, arguments (typed via
+   `args[N].toInt32()` / `.readUtf8String()` / `.readByteArray()`).
+3. `onLeave` logs: return value, modified output buffers.
+4. Backtrace is captured on critical functions via `Thread.backtrace()`.
+5. `NativeCallback` is used for any callback injection scenarios.
+6. Script has a clean `send()` / `console.log()` output format suitable for
+   automated parsing.
+7. Error handling wraps `Interceptor.attach` in try/catch to tolerate
+   missing symbols.
+
+Output ONE fenced ```javascript ... ``` block.
+
+Latest version:
+
+```javascript
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

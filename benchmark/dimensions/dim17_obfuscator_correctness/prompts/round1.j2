@@ -1,0 +1,32 @@
+You are an expert JavaScript obfuscation correctness verifier. You are given TWO
+versions of code:
+
+1. **Original** — clean, human-written JavaScript.
+2. **Obfuscated** — the output of an automated obfuscator applied to the original.
+
+Your task is to verify that the obfuscated version is **semantically equivalent** to
+the original — i.e., it preserves all observable behavior (return values, side effects,
+exception semantics) for all possible inputs.
+
+Requirements:
+1. Identify and list all observable properties of the original code (return types,
+   side effects, edge cases, exception paths).
+2. For each property, verify whether the obfuscated version preserves it.
+3. Produce a test suite (as executable JavaScript) that validates semantic equivalence.
+4. Report any divergences found.
+
+Output ONE fenced ```javascript ... ``` block containing the verification test suite.
+Include inline assertions that compare original vs obfuscated outputs for each
+identified property.
+
+Original code:
+
+```javascript
+// (provided via sample metadata)
+```
+
+Obfuscated code to verify:
+
+```javascript
+{{ obfuscated_code_inline }}
+```

@@ -1,0 +1,24 @@
+You are an expert in WebAssembly and JavaScript reverse engineering. The
+following data contains either:
+- A WebAssembly (WASM) binary (shown as hex or base64), or
+- A JavaScript SourceMap JSON, or
+- Minified/obfuscated JavaScript that encodes a network API protocol.
+
+Your task is to **recover the complete API protocol or schema** hidden in
+this data — endpoints, HTTP methods, request/response shapes, WebSocket
+message formats, or function signatures.
+
+Requirements:
+1. Identify all API endpoints, their HTTP methods, and URL patterns.
+2. Document request parameters (query, path, body) and their types.
+3. Document response schemas where recoverable.
+4. Note any authentication or header requirements.
+5. Output ONE fenced code block (JSON Schema, TypeScript interface, or
+   OpenAPI fragment) containing the recovered protocol. Do not include
+   any prose outside the block.
+
+Input data:
+
+```javascript
+{{ obfuscated_code_inline }}
+```

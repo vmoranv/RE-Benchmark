@@ -1,0 +1,18 @@
+Refine your previous output into a **clean, final memory scanning and structure
+analysis report**:
+
+1. Complete scan strategy — all approaches used with concrete steps and results.
+2. Full pointer chain documentation — base address, each offset, intermediate addresses,
+   and final target values.
+3. VTable analysis — object address, vtable pointer, enumerated virtual functions.
+4. Reconstructed struct definitions — C/C++ structs with explicit offsets, sizes, types,
+   and padding, verified against observed memory.
+
+Output ONE fenced code block with the final consolidated analysis. Remove any
+incomplete or incorrect pointer chains and struct layouts from earlier rounds.
+
+Previous output:
+
+```
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

@@ -1,0 +1,20 @@
+Take your latest V8 analysis script and produce a **clean, production-ready
+final version**. Ensure:
+
+1. Heap snapshot parser correctly handles the flat-array encoding:
+   `nodes[index + field_offset]` with field offsets from `meta.node_fields`.
+2. Bytecode output includes: offset, opcode name, operand values, and
+   accumulator effect.
+3. JIT state detection covers: Ignition, Sparkplug, Maglev, Turbofan.
+   Reports `deopt_count` when Turbofan-compiled.
+4. Object graph traversal outputs a JSON adjacency list with edge types
+   (`property`, `internal`, `hidden`, `weak`).
+5. Code is self-contained and can be run in Node.js with `--allow-natives-syntax`.
+
+Output ONE fenced ```javascript ... ``` block.
+
+Latest version:
+
+```javascript
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

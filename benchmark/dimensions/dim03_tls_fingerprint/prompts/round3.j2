@@ -1,0 +1,17 @@
+Take your latest TLS fingerprint configuration and **refine it into a
+production-ready format**. Optimize for:
+
+1. All required fields present with concrete values (no placeholders).
+2. Correct ordering of cipher suites and extensions to match the target hash.
+3. Ready-to-use format for at least one common library (tls-client,
+   curl-impersonate, or equivalent).
+4. Brief inline comments explaining non-obvious choices.
+
+Output ONE fenced code block (JSON, YAML, or JavaScript) containing the
+final configuration.
+
+Latest version:
+
+```
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

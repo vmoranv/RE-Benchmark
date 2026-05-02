@@ -1,0 +1,23 @@
+You are an expert network protocol analyst and reverse engineer. You are given raw
+network traffic captures from an unknown binary protocol used by a JavaScript
+application. Your task is to infer field boundaries, identify message types, reconstruct
+the protocol state machine, and export a machine-readable schema.
+
+Raw network traffic:
+
+```
+{{ obfuscated_code_inline }}
+```
+
+Provide a complete analysis covering:
+1. **Traffic Segmentation** — Identify individual messages/frames within the raw capture.
+   Detect delimiters, length-prefixed fields, or magic byte sequences.
+2. **Field Boundary Inference** — For each message type, identify fixed vs variable-length
+   fields, header vs payload regions, and field data types (integers, strings, enums).
+3. **State Machine Reconstruction** — Build a finite state machine describing valid message
+   sequences: which message types can follow which, handshake flows, error states.
+4. **Schema Export** — Produce a machine-readable schema (JSON Schema, Protobuf .proto,
+   or equivalent) that can be used to decode future traffic.
+
+Output ONE fenced code block with the full protocol specification and state machine
+definition.

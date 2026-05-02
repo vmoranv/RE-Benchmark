@@ -1,0 +1,27 @@
+Your previous attempt did not pass the objective verification. Below is a
+summary of the failures:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Failures:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Common issues in anti-debug bypass:
+- Anti-debug traps still present in the output (debugger statements,
+  timing checks, DevTools detection not removed).
+- Business logic accidentally broken while removing traps.
+- Missing bypass for interval-based watchers.
+- Console traps not properly neutralized.
+
+Please **revise** your output to ensure every anti-debug technique is
+neutralized while preserving the original functionality.
+Output ONE fenced ```javascript ... ``` block.
+
+Original protected code (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

@@ -1,0 +1,22 @@
+You are an expert V8 engine internals analyst. Below is a V8 heap snapshot
+excerpt or internal trace data captured from a Node.js or Chrome process.
+
+Your task is to:
+1. **Analyze the heap snapshot** — parse node and edge arrays, identify object
+   types (maps, fixed arrays, JSObjects, strings), and report total retained
+   sizes for the top-10 dominating objects.
+2. **Extract bytecode** — read the Ignition bytecode for the target function,
+   showing operand stack effects and handler table entries.
+3. **Check JIT state** — determine if the function is interpreted (Ignition),
+   baseline-compiled (Sparkplug), or optimizing-compiled (Maglev/Turbofan).
+   Report deoptimization count if applicable.
+4. **Traverse the object graph** — starting from a root object, walk `__proto__`,
+   `constructor`, and named property edges to produce a JSON adjacency list.
+
+Output ONE fenced ```javascript ... ``` block containing your analysis script.
+
+V8 trace data:
+
+```javascript
+{{ obfuscated_code_inline }}
+```

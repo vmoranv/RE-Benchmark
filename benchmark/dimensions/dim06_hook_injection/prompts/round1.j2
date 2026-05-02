@@ -1,0 +1,25 @@
+You are an expert JavaScript reverse engineer specializing in runtime API
+instrumentation. Your task is to write **correct and stealthy hooks** for the
+following browser APIs so that intercepted calls remain invisible to anti-hook
+detection scripts.
+
+Target APIs to hook:
+- `fetch` / `XMLHttpRequest` — intercept network requests
+- `crypto.subtle` — intercept cryptographic operations
+- `RTCPeerConnection` — intercept WebRTC signalling
+- `document.createElement` — intercept DOM element creation
+
+Requirements:
+1. Preserve the original function reference and forward all arguments faithfully.
+2. Use `Proxy` or wrapper patterns so that `toString()` on the hooked function
+   returns the original source.
+3. Avoid leaving global variables or detectable side effects.
+4. Each hook must capture: timestamp, arguments, and return value (where async,
+   capture the resolved promise value).
+5. Output ONE fenced ```javascript ... ``` block. Do not include prose outside.
+
+Instrumentation target code:
+
+```javascript
+{{ obfuscated_code_inline }}
+```

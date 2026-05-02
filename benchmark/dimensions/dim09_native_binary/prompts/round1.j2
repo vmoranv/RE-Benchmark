@@ -1,0 +1,25 @@
+You are an expert reverse engineer specializing in dynamic binary instrumentation
+with **Frida**. Below is information about a native binary target (function names,
+library names, exported symbols, and/or disassembly excerpts).
+
+Your task is to write a **Frida instrumentation script** that:
+1. Attaches to the target process and resolves the specified exported functions
+   using `Module.findExportByName()` or `Module.getExportByName()`.
+2. Hooks the target functions with `Interceptor.attach()` — log arguments in
+   `onEnter` and return values in `onLeave`.
+3. For encryption-related targets, captures input/output buffers using
+   `Memory.readByteArray()` and logs them as hex strings.
+4. For string-processing targets, reads C-string arguments with
+   `Memory.readUtf8String()`.
+5. Captures call backtraces with `Thread.backtrace()` when useful for
+   understanding call chains.
+6. Uses `NativeFunction` / `NativeCallback` where direct invocation or callback
+   injection is required.
+
+Output ONE fenced ```javascript ... ``` block. Do not include prose outside.
+
+Target binary information:
+
+```javascript
+{{ obfuscated_code_inline }}
+```

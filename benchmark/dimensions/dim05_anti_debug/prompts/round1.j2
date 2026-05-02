@@ -1,0 +1,25 @@
+You are an expert JavaScript reverse engineer specializing in anti-debugging
+and anti-hook bypass. The following code contains multiple anti-debugging
+techniques designed to detect and disrupt reverse engineering attempts.
+
+Common anti-debug techniques include:
+- `debugger` statements that pause execution
+- DevTools detection (window size comparison, regex toString timing)
+- Timing checks (performance.now / Date.now deltas)
+- Console traps (overriding console methods)
+- Interval-based monitoring (setInterval/setTimeout watchers)
+- Stack trace inspection (Error().stack analysis)
+- Function.prototype.toString hook detection
+
+Your task is to:
+1. **Identify** all anti-debugging techniques present in the code.
+2. **Bypass** each technique so the code runs normally outside of a debugger.
+3. Preserve all original business logic — only neutralize the anti-debug traps.
+4. Output ONE fenced ```javascript ... ``` block containing the patched code.
+   Do not include any prose outside the block.
+
+Protected code:
+
+```javascript
+{{ obfuscated_code_inline }}
+```

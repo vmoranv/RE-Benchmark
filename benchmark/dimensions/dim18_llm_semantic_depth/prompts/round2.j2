@@ -1,0 +1,28 @@
+Your previous analysis showed gaps in semantic understanding. Below is feedback:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Details:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **deepen your analysis** to address:
+
+1. Any identifier meanings that were incorrect or left unresolved.
+2. Control flow paths that were not fully traced.
+3. Data transformations whose purpose was not explained.
+4. Edge cases or side effects that were overlooked.
+
+Remember: this is a probe designed to distinguish true code comprehension from
+pattern matching. Show your reasoning at each step.
+
+Output a revised fenced ```javascript ... ``` block with the deobfuscated code,
+preceded by an updated semantic explanation and reasoning trace.
+
+Original obfuscated code (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

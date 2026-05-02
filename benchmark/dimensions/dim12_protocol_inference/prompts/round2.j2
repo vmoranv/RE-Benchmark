@@ -1,0 +1,26 @@
+Your previous attempt did not pass objective verification. Here is a summary
+of the detected gaps:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Details:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **revise** your output to address these issues. Specifically ensure:
+1. Field boundaries are explicitly defined with byte offsets, lengths, and data types
+   for each identified message type.
+2. The state machine includes all observed message sequences with explicit transition
+   rules (initial state, valid transitions, terminal/error states).
+3. A complete schema is provided in a standard format (JSON Schema, Protobuf, or
+   equivalent) — not just prose descriptions.
+
+Output ONE fenced code block with the revised protocol specification.
+
+Original traffic data:
+
+```
+{{ obfuscated_code_inline }}
+```

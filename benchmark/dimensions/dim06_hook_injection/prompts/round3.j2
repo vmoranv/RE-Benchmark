@@ -1,0 +1,16 @@
+Take your latest hook implementation and produce a **production-ready, stealthy
+final version**. Ensure:
+
+1. All hooks are self-contained in a single IIFE or module scope — no globals leaked.
+2. Each hook restores `toString` to match the original function's source.
+3. Async hooks correctly chain `.then()` / `await` to capture resolved values.
+4. A clean uninstall mechanism is provided (restore original references).
+5. Code is readable with concise comments at hook boundaries.
+
+Output ONE fenced ```javascript ... ``` block.
+
+Latest version:
+
+```javascript
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

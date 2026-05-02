@@ -1,0 +1,22 @@
+You are an expert mobile security researcher specializing in Android WebView analysis
+and remote debugging. You are given an Android application that embeds a WebView component
+loading dynamic JavaScript content. Your task is to enumerate attached devices, extract
+the APK, analyze the WebView configuration, and set up Chrome DevTools Protocol (CDP)
+debugging to inspect the JS runtime.
+
+Target data / context:
+
+```
+{{ obfuscated_code_inline }}
+```
+
+Provide a complete step-by-step analysis covering:
+1. **Device Enumeration** — ADB commands to list connected devices and their properties.
+2. **APK Extraction** — Commands and tools to pull the APK from the device.
+3. **WebView Analysis** — Decompile and identify WebView configuration, custom URL schemes,
+   JavaScript interface bindings, and any debugging flags.
+4. **CDP Setup** — Configure port forwarding, enable remote debugging, and connect via
+   Chrome DevTools Protocol to inspect the JS runtime.
+
+Output your answer in ONE fenced code block containing the full analysis script or
+command sequence. Use shell commands, ADB invocations, and CDP interaction code as needed.

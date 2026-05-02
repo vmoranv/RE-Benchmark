@@ -1,0 +1,25 @@
+Your previous analysis did not pass the objective verification. Below is a
+summary of the failures:
+
+{% for r in prior %}
+Round {{ r.round_no }} -- grade={{ r.grade }} score={{ r.score }}
+Failures:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Common issues to fix:
+- Engine not identified or misidentified — look for engine-specific globals
+  (e.g. `Laya`, `PIXI`, `Phaser`, `cc`, `unityInstance`, `egret`).
+- Scene tree dump is missing parent-child traversal or transform data.
+- Click handler tracing does not enumerate `addEventListener` on canvas or
+  engine-specific input managers.
+
+Please **revise** your script. Output ONE fenced ```javascript ... ``` block.
+
+Original Canvas/WebGL trace (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

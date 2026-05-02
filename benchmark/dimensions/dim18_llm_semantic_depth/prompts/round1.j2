@@ -1,0 +1,28 @@
+You are a deep code comprehension analyst. The code below has been obfuscated at
+level **{{ sample.obfuscation_level if sample else 'L3' }}** (L1=lexical, L2=structural,
+L3=data encoding, L4=semantic proxies, L5=virtualization). Your task is to demonstrate
+**true semantic understanding** rather than surface-level pattern matching.
+
+Analyze the obfuscated code and provide:
+
+1. **Semantic Explanation** — Describe WHAT the code does in plain English, including
+   the algorithm, data structures, and control flow. Do not describe the obfuscation
+   techniques — describe the underlying logic.
+
+2. **Deobfuscated Equivalent** — Produce a clean, readable JavaScript version that
+   is functionally identical to the obfuscated code. Use meaningful names that reflect
+   the inferred purpose of each identifier.
+
+3. **Reasoning Trace** — Briefly explain how you arrived at each conclusion about
+   identifier roles and control flow, so your reasoning process is transparent.
+
+Constraints:
+- Output ONE fenced ```javascript ... ``` block for the deobfuscated code.
+- The semantic explanation and reasoning trace may appear before the code block.
+- Preserve all observable behavior exactly.
+
+Obfuscated code (level {{ sample.obfuscation_level if sample else 'L3' }}):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

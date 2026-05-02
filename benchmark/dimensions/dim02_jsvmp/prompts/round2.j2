@@ -1,0 +1,26 @@
+Your previous attempt did not pass the objective verification. Below is a
+summary of the failures detected by the static analyzer:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Failures:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Common issues in JSVMP unpacking:
+- VM dispatcher remnants (while/switch) still present in output.
+- Opcode values not mapped to their actual operations.
+- Original function signatures not recovered.
+- Hex identifiers (_0x...) not replaced with meaningful names.
+
+Please **revise** your output to fix these issues. Ensure the recovered code
+is free of VM infrastructure and contains only the original logic.
+Output ONE fenced ```javascript ... ``` block.
+
+Original VM-protected code (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

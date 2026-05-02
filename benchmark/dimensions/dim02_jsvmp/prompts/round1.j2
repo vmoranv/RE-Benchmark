@@ -1,0 +1,24 @@
+You are an expert JavaScript reverse engineer specializing in virtual-machine
+protection (JSVMP) unpacking. The following code has been protected by a
+JavaScript virtual machine that encodes original operations as bytecode
+dispatched through an interpreter loop.
+
+Your task is to **recover the original program logic** that the VM protects.
+
+Requirements:
+1. Identify the VM dispatcher (typically a `while`/`switch` loop over an
+   instruction pointer and bytecode array).
+2. Map opcode values to their semantic operations (arithmetic, control flow,
+   property access, function calls).
+3. Reconstruct the original algorithm as clean, idiomatic JavaScript that
+   produces identical results.
+4. Replace numeric opcodes and encoded operands with meaningful names and
+   literal values.
+5. Output ONE fenced ```javascript ... ``` block containing the recovered
+   code. Do not include any prose or comments outside the block.
+
+VM-protected code:
+
+```javascript
+{{ obfuscated_code_inline }}
+```

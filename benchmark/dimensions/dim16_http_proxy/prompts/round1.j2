@@ -1,0 +1,31 @@
+You are a mobile security engineer tasked with intercepting HTTPS traffic from a
+target Android application for reverse engineering analysis. The application uses
+certificate pinning on some endpoints and communicates with multiple API backends.
+
+Based on the target scenario below, provide:
+
+1. **Proxy Setup** — Complete commands to start a transparent HTTP/HTTPS proxy
+   (e.g. mitmproxy, Charles, or Burp Suite) on the host machine, specifying the
+   listening address and port.
+
+2. **CA Certificate Export** — Steps to export the proxy's CA certificate in the
+   correct format for Android installation, including the target Android version's
+   certificate trust store location.
+
+3. **Interception Rules** — Configuration or script defining which URLs/domains
+   to intercept, rewrite, or block. Include rules for handling certificate-pinned
+   endpoints.
+
+4. **ADB Device Configuration** — `adb` commands to configure the Android device
+   (or emulator) to route traffic through the proxy.
+
+Constraints:
+- Target the scenario's specific API endpoints and certificate pinning behavior.
+- Output must be copy-pasteable (shell commands + config files in fenced blocks).
+- Do not include prose outside the fenced blocks except for brief inline comments.
+
+Target scenario:
+
+```
+{{ obfuscated_code_inline }}
+```

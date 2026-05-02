@@ -1,0 +1,19 @@
+You are an expert in TLS fingerprint analysis and evasion. Below is a target
+TLS fingerprint (JA3/JA4 hash) along with its component values. Your task is
+to **generate a TLS client configuration** that reproduces or closely matches
+this fingerprint to evade server-side fingerprint-based detection.
+
+Requirements:
+1. Output a complete TLS client configuration (cipher suites, extensions,
+   supported groups, signature algorithms, TLS version, ALPN, etc.).
+2. The configuration must be valid for use with common HTTP libraries
+   (e.g., `tls-client`, `curl-impersonate`, `got-scraping`, or raw socket).
+3. Explain the fingerprint structure and which fields influence the hash.
+4. Output ONE fenced code block (JSON, YAML, or JavaScript) containing the
+   configuration. Do not include any prose outside the block.
+
+Target fingerprint data:
+
+```
+{{ obfuscated_code_inline }}
+```

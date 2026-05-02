@@ -1,0 +1,26 @@
+Your previous attempt did not pass objective verification. Here is a summary
+of the detected gaps:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Details:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **revise** your output to address these issues. Specifically ensure:
+1. Syscall capture methodology references a concrete tool (strace, ETW, perf, eBPF)
+   with correct flags and filtering options.
+2. The correlation logic explicitly maps syscall entries to JS function names — not
+   just V8 internals or C++ frames.
+3. The output includes a structured syscall-to-JS mapping with counts, latencies, or
+   call frequencies.
+
+Output ONE fenced code block with the revised analysis.
+
+Original trace data:
+
+```
+{{ obfuscated_code_inline }}
+```

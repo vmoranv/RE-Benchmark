@@ -1,0 +1,22 @@
+You are an expert systems-level analyst specializing in syscall tracing and JavaScript
+runtime internals. You are given a captured execution trace from a Node.js / V8 process.
+Your task is to identify syscalls emitted during execution, correlate each syscall back
+to the originating JavaScript function call, and produce a structured mapping.
+
+Target trace data:
+
+```
+{{ obfuscated_code_inline }}
+```
+
+Provide a complete analysis covering:
+1. **Syscall Capture** — Describe how to capture syscalls (strace, ETW, perf_event_open,
+   eBPF) for a running JS process, including filtering for relevant syscall classes.
+2. **Trace Parsing** — Extract syscall entries with timestamps, arguments, return values,
+   and associated thread/process IDs.
+3. **JS Stack Correlation** — Map each syscall back to the JS function that triggered it
+   using V8 stack trace APIs, source maps, or debugger hooks.
+4. **Output Format** — Produce a structured mapping (JSON or table) linking each JS
+   function to its syscall footprint.
+
+Output ONE fenced code block with the full analysis and correlation script.

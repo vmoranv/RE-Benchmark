@@ -1,0 +1,26 @@
+Your previous attempt did not pass the objective verification. Below is a
+summary of the failures:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Failures:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Common issues in protocol recovery:
+- Missing endpoint paths or HTTP methods.
+- Request/response schemas incomplete or absent.
+- No structured output format (JSON Schema / TypeScript / OpenAPI).
+- Placeholder values instead of real field names.
+- Missing authentication or header details.
+
+Please **revise** your output to produce a complete protocol specification.
+Output ONE fenced code block.
+
+Original input data (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

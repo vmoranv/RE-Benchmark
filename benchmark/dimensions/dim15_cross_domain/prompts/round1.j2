@@ -1,0 +1,25 @@
+You are a senior reverse engineer performing cross-domain evidence correlation. You
+have been given multi-source evidence gathered from the following domains:
+
+- **Network traffic** (HTTP request/response captures, DNS logs)
+- **Memory snapshots** (heap dumps, stack traces)
+- **Hook logs** (instrumentation hooks on crypto, file I/O, network APIs)
+- **Syscall traces** (strace / dtruss output)
+- **Binary symbol tables** (exported/imported functions, vtable entries)
+
+Your task is to analyze all the evidence below and produce a **causal chain** that
+correctly identifies the sequence of events and data flows across these domains.
+
+Requirements:
+1. Identify every causal edge (A causes / triggers / leads to B).
+2. For each edge, cite the specific evidence source and line number or identifier.
+3. Cross-reference evidence from at least two different domains where possible.
+4. Output a single fenced ```json ... ``` block containing an array of causal-edge
+   objects, each with keys: {"source": "...", "target": "...", "evidence": [...],
+   "confidence": 0.0-1.0}.
+
+Multi-source evidence:
+
+```
+{{ obfuscated_code_inline }}
+```

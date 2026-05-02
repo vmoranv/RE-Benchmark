@@ -1,0 +1,19 @@
+Take your latest analysis script and produce a **clean, production-ready final
+version**. Ensure:
+
+1. Engine identification is robust — check multiple engine-specific globals
+   and renderer parameters.
+2. Scene tree dump outputs valid JSON with `id`, `type`, `transform` (x, y,
+   scaleX, scaleY, rotation), `children`, and `parent` for every node.
+3. Click handler tracing covers: DOM `addEventListener`, engine input systems
+   (e.g. `pixi.interaction`, `phaser.input`), and `hitArea` definitions.
+4. Code is self-contained and can be pasted into a browser DevTools console.
+5. Concise comments at function boundaries.
+
+Output ONE fenced ```javascript ... ``` block.
+
+Latest version:
+
+```javascript
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

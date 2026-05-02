@@ -1,0 +1,27 @@
+Your previous attempt did not pass objective verification. Here is a summary
+of the detected gaps:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Details:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **revise** your output to address these issues. Specifically ensure:
+1. Scan strategies cover multiple approaches (exact value, unknown initial, changed/
+   unchanged) with concrete steps for each.
+2. Pointer chains include explicit hex addresses, offsets at each level, and the final
+   dereferenced value.
+3. VTable entries are enumerated with virtual function addresses and resolved symbols
+   where possible.
+4. Struct definitions use C/C++ syntax with explicit field offsets, sizes, and types.
+
+Output ONE fenced code block with the revised analysis.
+
+Original memory context:
+
+```
+{{ obfuscated_code_inline }}
+```

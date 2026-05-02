@@ -1,0 +1,21 @@
+You are an expert JavaScript reverse engineer specializing in Canvas and WebGL
+fingerprinting. Below is a trace of Canvas/WebGL API calls captured from a
+browser game or interactive application.
+
+Your task is to:
+1. **Identify the game engine** (Laya, PixiJS, Phaser, Cocos, Unity WebGL,
+   Egret, CreateJS, Three.js, Babylon.js, or PlayCanvas) from the API patterns.
+2. **Dump the scene tree** — write a script that traverses the engine's scene
+   graph and outputs a structured JSON representation of all nodes, including
+   their types, transforms, and parent-child relationships.
+3. **Trace click/touch handlers** — enumerate all interactive elements and show
+   which event listeners are attached, including event type and handler source
+   location where recoverable.
+
+Output ONE fenced ```javascript ... ``` block containing your analysis script.
+
+Canvas/WebGL API trace:
+
+```javascript
+{{ obfuscated_code_inline }}
+```

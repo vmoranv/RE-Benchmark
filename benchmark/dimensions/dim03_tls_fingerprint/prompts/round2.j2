@@ -1,0 +1,26 @@
+Your previous attempt did not pass the objective verification. Below is a
+summary of the failures:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Failures:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Common issues in TLS fingerprint spoofing:
+- Missing required fields (tls_version, cipher_suites, extensions,
+  signature_algorithms).
+- Incomplete JA3 or JA4 component coverage.
+- Placeholder values left in the config instead of real values.
+- Config not structured as valid JSON/YAML.
+
+Please **revise** your output to produce a complete, real TLS configuration
+that matches the target fingerprint. Output ONE fenced code block.
+
+Original target fingerprint (for reference):
+
+```
+{{ obfuscated_code_inline }}
+```

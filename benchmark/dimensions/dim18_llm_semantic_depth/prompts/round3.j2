@@ -1,0 +1,18 @@
+Produce the **complete final analysis** demonstrating full semantic understanding
+of the obfuscated code. This should include:
+
+1. A comprehensive semantic explanation covering all observable behaviors.
+2. The final deobfuscated JavaScript code with meaningful names and clear structure.
+3. A self-assessment of confidence level for each inferred identifier and control flow
+   decision, acknowledging any remaining ambiguities.
+4. A brief note on how the obfuscation level affected the difficulty of analysis,
+   contributing to the reasoning decay curve measurement.
+
+Output ONE fenced ```javascript ... ``` block with the final deobfuscated code,
+with the analysis prose before it.
+
+Latest analysis:
+
+```javascript
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

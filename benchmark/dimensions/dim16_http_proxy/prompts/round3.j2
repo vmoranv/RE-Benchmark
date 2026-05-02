@@ -1,0 +1,18 @@
+Produce the **complete final proxy and interception configuration** that is ready
+for immediate deployment. This should be a self-contained playbook containing:
+
+1. Proxy startup script with all flags and options.
+2. CA certificate export and Android trust store installation commands.
+3. Full interception rule set covering all endpoints from the scenario.
+4. ADB proxy configuration commands for both emulator and physical device.
+5. Verification steps to confirm traffic is being intercepted.
+
+Format each section as a separate fenced block with clear headers. Use
+```bash ... ``` for shell commands and ```json ... ``` or ```conf ... ``` for
+configuration files.
+
+Latest configuration:
+
+```
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

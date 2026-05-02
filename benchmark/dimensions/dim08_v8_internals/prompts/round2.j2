@@ -1,0 +1,25 @@
+Your previous V8 analysis did not pass the objective verification. Below is a
+summary of the failures:
+
+{% for r in prior %}
+Round {{ r.round_no }} -- grade={{ r.grade }} score={{ r.score }}
+Failures:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Common issues to fix:
+- Heap snapshot parsing does not correctly iterate node/edge arrays (the V8
+  snapshot format stores nodes as flat typed arrays with fixed-stride fields).
+- Bytecode extraction is missing operand types (Register, Accumulator, ConstantPool).
+- JIT state check does not query `%GetOptimizationStatus()` or equivalent.
+- Object graph traversal does not follow prototype chain or internal fields.
+
+Please **revise** your script. Output ONE fenced ```javascript ... ``` block.
+
+Original V8 trace data (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

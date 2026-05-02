@@ -1,0 +1,17 @@
+Produce the **complete final semantic verification report** containing:
+
+1. An exhaustive test suite covering all observable properties.
+2. A summary table of properties checked and pass/fail status.
+3. Any identified divergences between original and obfuscated versions.
+
+Output a single fenced ```javascript ... ``` block with the complete runnable
+verification suite. The suite should:
+- Define both the original and obfuscated functions.
+- Run assertions comparing outputs for a comprehensive set of inputs.
+- Log a summary of pass/fail counts.
+
+Latest verification attempt:
+
+```javascript
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

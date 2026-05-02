@@ -1,0 +1,29 @@
+Your previous attempt did not pass objective verification. Here is a summary
+of the detected gaps:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Details:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **revise** your output to address these issues. Specifically ensure:
+1. Trace recording includes concrete instrumentation code (hooks, probes, or debugger
+   scripts) that captures function name, arguments, return value, and timestamp for
+   each call.
+2. Timestamp-based navigation describes the state restoration mechanism — how to jump
+   to a specific point and reconstruct the full program state.
+3. Heap diff format is explicitly defined: object IDs, field-level changes, allocation/
+   deallocation events, with a structured output schema (JSON or equivalent).
+4. The AI summarization section describes what the summary covers and provides a template
+   or example output.
+
+Output ONE fenced code block with the revised specification.
+
+Original execution context:
+
+```
+{{ obfuscated_code_inline }}
+```

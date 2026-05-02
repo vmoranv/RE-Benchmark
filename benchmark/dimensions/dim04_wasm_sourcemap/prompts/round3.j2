@@ -1,0 +1,16 @@
+Take your latest recovered protocol/API specification and **refine it into a
+clean, documented format**. Optimize for:
+
+1. Every endpoint has method, path, request shape, and response shape.
+2. All field names are meaningful (not minified identifiers).
+3. Correct TypeScript or JSON Schema types for every field.
+4. Brief descriptions for non-obvious fields or endpoints.
+5. Consistent naming conventions across the entire schema.
+
+Output ONE fenced code block (JSON Schema, TypeScript, or OpenAPI fragment).
+
+Latest version:
+
+```javascript
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

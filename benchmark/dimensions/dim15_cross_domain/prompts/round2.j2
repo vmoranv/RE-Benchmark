@@ -1,0 +1,24 @@
+Your previous causal chain analysis was incomplete or contained errors. Below is a
+summary of the verification results:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Details:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **revise** your causal chain to address these gaps:
+
+1. Any causal edges that were missed or incorrectly inferred.
+2. Evidence links that lack cross-domain corroboration.
+3. Confidence scores that seem unjustified.
+
+Output ONE fenced ```json ... ``` block with the corrected causal chain.
+
+Original evidence (for reference):
+
+```
+{{ obfuscated_code_inline }}
+```

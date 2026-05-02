@@ -1,0 +1,25 @@
+Your previous semantic verification was incomplete. Below is a summary of the
+verification gaps:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Details:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **revise** your verification to address:
+
+1. Observable properties that were not covered by test cases.
+2. Edge cases or exception paths that were missed.
+3. Any implicit assumptions about input ranges or types that should be tested.
+4. Missing comparison of side effects (DOM mutations, global state changes).
+
+Output ONE fenced ```javascript ... ``` block with the improved verification suite.
+
+Original obfuscated code (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

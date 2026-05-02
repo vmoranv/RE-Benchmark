@@ -1,0 +1,25 @@
+Your previous proxy configuration was incomplete or contained errors. Below is a
+summary of the verification results:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Details:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **revise** your configuration to fix these issues:
+
+1. Missing or incorrect proxy startup commands.
+2. CA certificate handling gaps (wrong format, missing trust store path).
+3. Interception rules that don't cover all target endpoints or pinning bypass.
+4. ADB commands that won't correctly route device traffic through the proxy.
+
+Output revised configuration in fenced blocks (bash / conf / json as appropriate).
+
+Original scenario (for reference):
+
+```
+{{ obfuscated_code_inline }}
+```

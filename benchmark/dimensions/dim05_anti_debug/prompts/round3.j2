@@ -1,0 +1,17 @@
+Take your latest anti-debug bypass output and **refine it into a clean,
+production-ready version**. Optimize for:
+
+1. Every anti-debug trap removed or neutralized with minimal invasiveness.
+2. Original business logic preserved exactly — same inputs produce same outputs.
+3. Clear comments explaining what was bypassed and why.
+4. No remaining debugger statements, timing checks, or DevTools detectors.
+5. Idiomatic modern JavaScript (ES2022+).
+
+Output ONE fenced ```javascript ... ``` block. Treat the previous round's
+code as the input to refine.
+
+Latest version:
+
+```javascript
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

@@ -1,0 +1,18 @@
+Take your latest VM-unpacked output and **rewrite it for maximum human
+readability** without altering observable behavior. Optimize for:
+
+1. Clear variable / function names that reflect the original intent.
+2. Idiomatic modern JavaScript (ES2022+).
+3. Complete removal of any remaining VM dispatch infrastructure, opcode
+   references, or bytecode arrays.
+4. Inline any trivial helper functions that were artifacts of the VM.
+5. Concise but informative comments at module / function boundaries.
+
+Output ONE fenced ```javascript ... ``` block. Treat the previous round's
+code as the input to refine.
+
+Latest version:
+
+```javascript
+{{ prior[-1].payload if prior else obfuscated_code_inline }}
+```

@@ -1,0 +1,25 @@
+You are an expert debugging engineer specializing in execution trace recording, reverse
+debugging (time-travel debugging), and dynamic analysis. You are given an execution
+context from a JavaScript application. Your task is to design a system that records
+function call traces, enables timestamp-based jumps, performs heap diffing, and produces
+an AI-generated summary of the execution flow.
+
+Target execution context:
+
+```
+{{ obfuscated_code_inline }}
+```
+
+Provide a complete analysis covering:
+1. **Trace Recording** — Instrument the target to record every function call with:
+   function name, arguments (serialized), return value, timestamp, and call depth.
+   Cover both JS-level and native boundary calls.
+2. **Timestamp-Based Jumps** — Enable navigating to any point in the recorded execution
+   by timestamp or event index, restoring the full program state (registers, stack, heap).
+3. **Heap Diffing** — Between any two execution points, compute the heap difference:
+   new allocations, freed objects, modified fields, with object identity tracking.
+4. **AI Summarization** — Generate a human-readable summary of the execution flow,
+   highlighting key state transitions, error paths, and anomalous behavior.
+
+Output ONE fenced code block with the trace recording specification, diff format, and
+summary template.

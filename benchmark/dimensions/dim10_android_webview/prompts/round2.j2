@@ -1,0 +1,26 @@
+Your previous attempt did not pass objective verification. Here is a summary
+of the detected gaps:
+
+{% for r in prior %}
+Round {{ r.round_no }} — grade={{ r.grade }} score={{ r.score }}
+Details:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Please **revise** your output to address these issues. Specifically ensure:
+1. All ADB commands are syntactically correct and cover enumeration, APK pull, and
+   port forwarding.
+2. WebView configuration analysis includes `setWebContentsDebuggingEnabled` status,
+   JavaScript interface methods, and any custom URL scheme handlers.
+3. CDP connection setup includes correct `adb forward` port mapping and the target
+   WebSocket URL pattern.
+
+Output ONE fenced code block with the revised analysis.
+
+Original context:
+
+```
+{{ obfuscated_code_inline }}
+```

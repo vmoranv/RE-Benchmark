@@ -1,0 +1,28 @@
+Your previous Frida script did not pass the objective verification. Below is
+a summary of the failures:
+
+{% for r in prior %}
+Round {{ r.round_no }} -- grade={{ r.grade }} score={{ r.score }}
+Failures:
+{% for k, v in r.details.items() -%}
+  - {{ k }}: {{ v }}
+{% endfor %}
+{% endfor %}
+
+Common issues to fix:
+- Missing `Interceptor.attach()` call — scripts must hook the target function.
+- No `onEnter` / `onLeave` handlers — both are needed for full argument and
+  return-value capture.
+- Export resolution is missing — use `Module.findExportByName(null, "funcName")`
+  to locate the function.
+- Argument access uses incorrect syntax — use `args[0]`, `args[1]`, etc., not
+  native parameter names.
+- Return value access is missing — use `retval` in `onLeave`.
+
+Please **revise** your Frida script. Output ONE fenced ```javascript ... ``` block.
+
+Original target information (for reference):
+
+```javascript
+{{ obfuscated_code_inline }}
+```

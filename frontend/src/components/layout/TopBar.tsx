@@ -8,7 +8,7 @@ export function TopBar() {
     void i18n.changeLanguage(next);
   };
   return (
-    <header className="flex h-14 items-center justify-between border-b border-zinc-200 bg-white px-6 dark:border-zinc-800 dark:bg-zinc-950">
+    <header className="flex h-14 items-center justify-between border-b border-zinc-200 bg-white px-6 dark:border-zinc-800 dark:bg-zinc-950" role="banner" aria-label="Top bar">
       <input
         type="search"
         placeholder={t("common.loading")}

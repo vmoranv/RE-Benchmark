@@ -10,7 +10,7 @@ export function App() {
       <Sidebar />
       <div className="flex flex-col">
         <TopBar />
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto p-6" role="main">
           <h1 className="mb-6 text-2xl font-semibold tracking-tight">
             {t("nav.leaderboard")}
           </h1>

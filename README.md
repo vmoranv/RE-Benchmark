@@ -98,6 +98,9 @@ The stack exposes:
 | POST | `/api/v1/runs` | Submit a benchmark run |
 | GET | `/api/v1/runs` | List runs |
 | GET | `/api/v1/runs/{id}` | Get run details |
+| GET | `/api/v1/reports/{id}/json` | Export run as JSON |
+| GET | `/api/v1/reports/{id}/csv` | Export run metrics as CSV |
+| GET | `/api/v1/reports/batch/json` | Batch export filtered runs |
 
 ## Architecture
 
@@ -134,8 +137,8 @@ Key design decisions documented in `docs/adr/`:
 |-----------|:------:|
 | M1: Vertical-slice skeleton | Done |
 | M2: 18 dimensions + multi-model + sandbox | Done |
-| M3: PostgreSQL persistence + real LLM runs | Planned |
-| M4: Performance, accessibility, report export | Planned |
+| M3: PostgreSQL persistence + real LLM runs | Done |
+| M4: Performance, accessibility, report export | Done |
 
 ## Contributing
 

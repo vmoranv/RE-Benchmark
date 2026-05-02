@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from apps.api.routers import dimensions, health, runs, samples
+from apps.api.routers import dimensions, health, reports, runs, samples
 from apps.api.settings import settings
 
 
@@ -39,6 +39,7 @@ def create_app() -> FastAPI:
     app.include_router(runs.router)
     app.include_router(samples.router)
     app.include_router(dimensions.router)
+    app.include_router(reports.router)
 
     return app
 

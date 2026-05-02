@@ -12,7 +12,7 @@ const NAV_ITEMS = [
 export function Sidebar() {
   const { t } = useTranslation();
   return (
-    <aside className="flex flex-col border-r border-zinc-200 bg-white px-4 py-6 dark:border-zinc-800 dark:bg-zinc-950">
+    <aside className="flex flex-col border-r border-zinc-200 bg-white px-4 py-6 dark:border-zinc-800 dark:bg-zinc-950" role="navigation" aria-label="Main navigation">
       <div className="mb-8">
         <div className="font-mono text-base font-semibold">{t("app.name")}</div>
         <div className="text-xs text-zinc-500">{t("app.tagline")}</div>

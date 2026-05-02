@@ -27,12 +27,12 @@ export function Leaderboard() {
 
   return (
     <div className="bench-card overflow-hidden">
-      <table className="w-full text-left text-sm">
+      <table className="w-full text-left text-sm" role="table">
         <thead className="bg-zinc-50 text-xs uppercase text-zinc-500 dark:bg-zinc-900">
           <tr>
-            <th className="px-4 py-2">Dimension</th>
-            <th className="px-4 py-2">Status</th>
-            <th className="px-4 py-2">Milestone</th>
+            <th className="px-4 py-2" scope="col">Dimension</th>
+            <th className="px-4 py-2" scope="col">Status</th>
+            <th className="px-4 py-2" scope="col">Milestone</th>
           </tr>
         </thead>
         <tbody>
@@ -41,7 +41,7 @@ export function Leaderboard() {
               key={d.code}
               className="border-t border-zinc-100 dark:border-zinc-900"
             >
-              <td className="px-4 py-2 font-mono">{d.code}</td>
+              <td className="px-4 py-2 font-mono" scope="row">{d.code}</td>
               <td className="px-4 py-2">
                 <span
                   className={

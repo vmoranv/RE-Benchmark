@@ -171,6 +171,35 @@ def samples_list(
     console.print(table)
 
 
+@app.command(name="generate-samples")
+def generate_samples(
+    dimension: str = typer.Option("D01", help="Dimension code (e.g. D01, D05)"),
+    level: int = typer.Option(2, help="Obfuscation level 1-5"),
+    sample_name: str = typer.Option("generated_001", help="Sample name"),
+    source: Path | None = typer.Option(None, help="Path to clean JS file"),
+) -> None:
+    """Generate obfuscated samples using real obfuscation tools."""
+    from benchmark.tools.sample_generator.generator import generate_sample
+
+    if source and source.exists():
+        original = source.read_text(encoding="utf-8")
+    else:
+        console.print("[yellow]No source file, using D01 smoke sample.[/yellow]")
+        base = Path("benchmark/samples/seed_samples/D01/smoke_001/original.js")
+        original = base.read_text(encoding="utf-8")
+
+    path = generate_sample(
+        dimension=dimension,
+        original_code=original,
+        sample_name=sample_name,
+        obfuscation_level=level,
+    )
+    console.print(f"[green]Generated: {path}[/green]")
+    console.print(f"  original.js     -> {path / 'original.js'}")
+    console.print(f"  obfuscated.js   -> {path / 'obfuscated.js'}")
+    console.print(f"  manifest.yaml   -> {path / 'manifest.yaml'}")
+
+
 def main() -> None:
     app()
 

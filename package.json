@@ -1,0 +1,28 @@
+{
+  "name": "re-benchmark",
+  "version": "1.0.0",
+  "description": "> **JS/Web Reverse Engineering Comprehensive Benchmark Platform** > > Extending [JsDeObsBench](https://arxiv.org/abs/2406.06636) into a unified, public, reproducible benchmark covering the full Web/JS reverse-engineering pipeline.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vmoranv/RE-Benchmark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vmoranv/RE-Benchmark/issues"
+  },
+  "homepage": "https://github.com/vmoranv/RE-Benchmark#readme",
+  "devDependencies": {
+    "javascript-obfuscator": "^5.4.2",
+    "js-confuser": "^2.0.1"
+  }
+}

@@ -11,7 +11,7 @@ jobs:
   q01-headless-repro:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Verify compose stack starts
         run: |
           docker compose -f infra/compose/docker-compose.yml up --build -d
@@ -23,8 +23,8 @@ jobs:
   q02-deterministic:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: |
           python -m pip install --upgrade pip
@@ -34,8 +34,8 @@ jobs:
   q12-semantic-fidelity:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: |
           python -m pip install --upgrade pip

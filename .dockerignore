@@ -1,0 +1,17 @@
+.git
+.claude
+.serena
+.venv
+.mypy_cache
+.pytest_cache
+.ruff_cache
+__pycache__/
+*.py[cod]
+node_modules/
+frontend/node_modules/
+frontend/dist/
+artifacts/
+runs/
+samples_local/
+*.log
+swagger-ui.png

@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1.7
 FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
@@ -9,11 +8,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml ./
-RUN pip install --no-cache-dir \
-        "celery[redis]>=5.6.0" "redis>=7.4.0" "sqlalchemy>=2.0.49" \
-        "psycopg[binary]>=3.3.0" "pydantic>=2.12.0" "pydantic-settings>=2.6.0" \
-        "anthropic>=0.45.0" "httpx>=0.28.0" "tenacity>=9.0.0" \
-        "structlog>=25.0.0" "jinja2>=3.1.0" "pyyaml>=6.0.0"
+COPY infra/docker/export_project_deps.py /tmp/export_project_deps.py
+RUN python /tmp/export_project_deps.py pyproject.toml /tmp/requirements.txt && \
+    pip install --no-cache-dir -r /tmp/requirements.txt && \
+    rm /tmp/requirements.txt /tmp/export_project_deps.py
 
 COPY apps ./apps
 COPY benchmark ./benchmark

@@ -29,6 +29,7 @@ It is built around three pillars:
 - [uv](https://docs.astral.sh/uv/) package manager
 - Python 3.11+ (managed by uv automatically)
 - Node.js 22+ (for sandbox-based semantic test execution)
+- pnpm 10+ (via Corepack)
 - Docker 24+ and Docker Compose v2 (for full stack deployment)
 
 ### Development Setup
@@ -41,14 +42,20 @@ cd RE-Benchmark
 # 2. Install Python dependencies (creates .venv automatically)
 uv sync
 
-# 3. Install pre-commit hooks (ruff, mypy, format checks)
+# 3. Install Node dependencies
+corepack enable
+pnpm install --frozen-lockfile
+cd frontend && pnpm install --frozen-lockfile && cd ..
+
+# 4. Install pre-commit hooks (ruff, mypy, format checks)
 uv run pre-commit install
 
-# 4. Verify everything works
+# 5. Verify everything works
 uv run pytest -v                    # 31 tests should pass
 uv run pre-commit run --all-files   # All hooks should pass
+cd frontend && pnpm typecheck && pnpm build && cd ..
 
-# 5. Run the CLI
+# 6. Run the CLI
 uv run bench version                # Print version
 uv run bench dimensions list        # List all 18 dimensions
 uv run bench samples list           # List loaded samples for D01

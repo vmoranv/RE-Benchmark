@@ -1,6 +1,7 @@
 {
   "name": "re-benchmark",
   "version": "1.0.0",
+  "packageManager": "pnpm@10.33.0",
   "description": "> **JS/Web Reverse Engineering Comprehensive Benchmark Platform** > > Extending [JsDeObsBench](https://arxiv.org/abs/2406.06636) into a unified, public, reproducible benchmark covering the full Web/JS reverse-engineering pipeline.",
   "main": "index.js",
   "directories": {

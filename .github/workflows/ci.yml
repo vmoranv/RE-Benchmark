@@ -63,8 +63,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - run: corepack enable
       - working-directory: frontend
         run: |
-          npm install
-          npm run typecheck
-          npm run build
+          pnpm install --frozen-lockfile
+          pnpm typecheck
+          pnpm build

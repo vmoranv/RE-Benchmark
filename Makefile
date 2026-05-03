@@ -23,7 +23,8 @@ help:
 
 install:
 	pip install -e .[dev,sandbox]
-	cd frontend && npm install
+	pnpm install --frozen-lockfile
+	cd frontend && pnpm install --frozen-lockfile
 
 fmt:
 	ruff format .
@@ -64,10 +65,10 @@ migrate:
 	alembic upgrade head
 
 frontend-dev:
-	cd frontend && npm run dev
+	cd frontend && pnpm dev
 
 frontend-build:
-	cd frontend && npm run build
+	cd frontend && pnpm build
 
 clean:
 	rm -rf .pytest_cache .mypy_cache .ruff_cache htmlcov dist build
